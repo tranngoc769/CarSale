@@ -5,6 +5,10 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
+
+   <?php if ($module == "sub") : ?>
+      <?php include("sub_head.php") ?>
+   <?php endif; ?>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="author" content="potenzaglobalsolutions.com" />
@@ -943,16 +947,7 @@
    <script src='/style/js/jquery.min.js' id='jquery-core-js'></script>
    <script src='/style/js/jquery-migrate.min.js' id='jquery-migrate-js'></script>
    <script src='/style/js/jquery.blockUI.min.js' id='jquery-blockui-js'></script>
-   <script id='wc-add-to-cart-js-extra'>
-      var wc_add_to_cart_params = {
-         "ajax_url": "\/wp-admin\/admin-ajax.php",
-         "wc_ajax_url": "\/?wc-ajax=%%endpoint%%",
-         "i18n_view_cart": "View cart",
-         "cart_url": "https:\/\/cardealer.potenzaglobalsolutions.com\/cart\/",
-         "is_cart": "",
-         "cart_redirect_after_add": "no"
-      };
-   </script>
+
    <script src='/style/js/add-to-cart.min.js' id='wc-add-to-cart-js'></script>
    <script data-minify="1" src='/style/img/woocommerce-add-to-cart1acc.js?ver=1622616315' id='vc_woocommerce-add-to-cart-js-js'></script>
    <link rel="https://api.w.org/" href="https://cardealer.potenzaglobalsolutions.com/wp-json/" />
@@ -2918,3 +2913,6 @@
       }
    </style>
 </head>
+<body class="archive post-type-archive post-type-archive-cars theme-cardealer cd-seo-post woocommerce-no-js mega-menu-primary-menu is_vc_disabled site-layout-standard wpb-js-composer js-comp-ver-6.6.0 vc_responsive" itemscope itemtype="http://schema.org/WebPage">
+   <div id="page" class="hfeed site page-wrapper ">
+      <?php require("header.php") ?>

@@ -12,8 +12,8 @@
                               <ul class="menu-logo">
                                  <li>
                                     <a href="https://cardealer.potenzaglobalsolutions.com/" rel="home">
-                                       <img class="site-logo" src="/style/img/logo-light.png" alt="Car Dealer" />
-                                       <img class="sticky-logo" src="/style/img/logo.png" alt="Car Dealer" />
+                                       <img class="site-logo" src="/style/img/logo-light.png" alt="Trang Chủ" />
+                                       <img class="sticky-logo" src="/style/img/logo.png" alt="Cửa hàng" />
                                     </a>
                                  </li>
                               </ul>
@@ -41,7 +41,7 @@
                                     <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-last-item mega-align-bottom-left mega-menu-flyout mega-menu-item-8168' id='mega-menu-item-8168'><a class="mega-menu-link" href="#" aria-haspopup="true" aria-expanded="false" tabindex="0">Cửa hàng</a>
                                     </li>
                                     <li class="menu-item cdfs-add-vehicle"><a href="https://cardealer.potenzaglobalsolutions.com/add-car" class="listing_add_cart heading-font button">
-                                          <div>Add Car</div>
+                                          <div>Quản lý</div>
                                        </a></li>
                                  </ul>
                               </div>
