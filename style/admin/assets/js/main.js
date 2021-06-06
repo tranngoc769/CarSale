@@ -1,14 +1,21 @@
-Dropzone.autoDiscover = false;
+try {
+    Dropzone.autoDiscover = false;
+} catch (e) {
+
+}
 var dropzone;
 $(document).ready(function() {
     console.log("ready");
-    dropzone = new Dropzone("#dropzone", {
-        addRemoveLinks: true,
-        acceptedFiles: "image/*",
-        dictRemoveFile: "Loại bỏ"
-    });
-    console.log(dropzone)
-        // $(".note-editable")[0].innerHTML
+    try {
+        dropzone = new Dropzone("#dropzone", {
+            addRemoveLinks: true,
+            acceptedFiles: "image/*",
+            dictRemoveFile: "Loại bỏ"
+        });
+    } catch (e) {
+
+    }
+    // $(".note-editable")[0].innerHTML
     $("#addProperty").on("click", function() {
         $('#thongsoTable tr:last').after(` 
             <tr tag="prop">
@@ -28,10 +35,40 @@ $(document).ready(function() {
         `);
     })
 
+    $(document).on("click", "a[name='delete_category']", function(e) {
+        e.preventDefault();
+        let id = $(this).attr('tag') / 1;
+        let formData = new FormData();
+        formData.append('c_id', id);
+        var settings = {
+            url: "delete_category",
+            method: "POST",
+            timeout: 0,
+            processData: false,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            data: formData,
+        };
+        $.ajax(settings)
+            .fail((result, status, error) => {
+                swal("Xóa danh mục", "Xóa danh mục không thành công", "error");
+
+            })
+            .success((result, status, error) => {
+                let dt = JSON.parse(result);
+                if (dt.code != 200) {
+                    swal("Xóa danh mục", "Xóa danh mục không thành công " + dt.msg, "erro");
+                } else {
+                    swal("Xóa danh mục", "Xóa danh mục thành công", "success");
+                    location.reload();
+                }
+            });
+    });
     $("#save_product").on("click", function(e) {
         e.preventDefault();
         let name = $("#p_name").val();
         let price = $("#p_price").val();
+        let sale_price = $("#sale_price").val();
         let category = $("#p_category").val();
         let full_description = $(".note-editable")[0].innerHTML;
         // 
@@ -74,6 +111,10 @@ $(document).ready(function() {
             return;
         }
 
+
+        if (sale_price == "" || sale_price <= 0) {
+            sale_price = price;
+        }
         // full_description = full_description.replace("<b>", `<strong style="color: #00aae7; font-size: 25.92px;"><span style="font-size: 25.92px;">`);
         // full_description = full_description.replace("</b>", `</span></strong>`);
         // full_description = full_description.replace("<h1>", `<strong style="color: #00aae7; font-size: 25.92px;"><span style="font-size: 25.92px;">`);
@@ -116,6 +157,7 @@ $(document).ready(function() {
         var formData = new FormData();
         formData.append("name", name);
         formData.append("price", price);
+        formData.append("sale_price", sale_price);
         formData.append("category", category);
         formData.append("short", short_description);
         formData.append("full", full_description);
